@@ -1,0 +1,95 @@
+%  sample input file for using the NASA.cls LaTeX class
+%  this distribution is handy for formatting TM, TP, CR, etc.
+%
+%  $Id: sample.tex,v 1.18 2009/08/10 17:22:22 wawood Exp $
+
+%  next 2 lines pull in the NASA.cls file, put options between []
+\documentclass[]             % options: RDPonly, coveronly, nocover
+{NASA}                       %   plus standard article class options
+
+
+%  Fill in the following catagories between the braces {}
+\title{Avionics for Low-Cost High-Altitude Balloon Science Platforms}
+\author{J. C. Chin and Rocket U} % list all the author names for the RDP
+
+\AuthorAffiliation{Jeffrey Chin \\                   % list the authors
+  Glenn Research Center, Cleveland, OH\\[10pt]   % with affiliations
+  %Doug Astler, Kristen Bury,  Deborah Goodenow, Steven Korn, 
+  %Jeremiah McNatt, \\ 
+  %Justin Niehaus,  Anthony Roberts, Amanda Stevenson, Fransua Thomas  \\ 
+    % list the authors
+  %Glenn Research Center, Cleveland, OH\\[10pt]
+  }
+\NasaCenter{Glenn Research Center\\Cleveland, OH 44135-3127}
+\Type{TM}                    % TM, TP, CR, CP, SP, TT
+\SubjectCategory{64}         % two digit number
+\LNumber{12456}              % Langley L-number
+\Number{217743}              % Report number
+\Month{02}                   % two digit number
+\Year{2015}                  % four digit number
+\SubjectTerms{CFD, grid}     % 4-5 comma separated words
+\Pages{10}                   % all the pages from the front to back covers
+\DatesCovered{10/2013--2/2014}              % 10/2000--2/2014
+\ContractNumber{}            % NAS1-12345
+\GrantNumber{}               % NAG1-1234
+\ProgramElementNumber{}
+\ProjectNumber{}             % NCC1-123
+\TaskNumber{}                % Task 123
+\WorkUnitNumber{}            % 123-45-67-89
+\SupplementaryNotes{}
+\Acknowledgment{This paper is based on work done by the pilot Rocket University
+training program. Special thanks to my peers in the cohort, subject-matter 
+experts, Paul Bartollotta and Rochelle Ghallagher.}
+
+\abstract{ This document outlines key components helpful for launching high-
+altitude research balloons where cost and rapid development are desired.
+The ability to monitor the state and location of the platform is key for 
+gathering data, recoverability, and developing insights on potential
+improvements for subsequent iterations.
+}   % suggested 200 words
+
+\usepackage{minted} %syntax highlighting
+\usepackage{color} %syntax highlighting
+\usepackage{graphicx}
+\usepackage{changepage}
+\usepackage{amsmath} %math equations
+\usepackage{subfiles} %break up document into subfiles
+\usepackage{hyperref} %hyperlinks
+\usepackage{courier} %courier font for variable names
+\usepackage{cleveref} %section references
+\usepackage[all]{hypcap} %figure references point to top of figure (must come after hyperref)
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{float} %override image placement
+
+%these seemed to be necessary with minted... not sure what they do..
+\makeatletter
+\color{black}
+\let\default@color\current@color
+\makeatother
+\restylefloat{figure} %override image placement
+
+%reference appendix
+\crefname{appsec}{Appendix}{Appendices}
+\begin{document}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\subfile{avionics}
+
+
+\cite{Turbofan}
+\cite{NonlinearDynamic}
+\cite{MatlabOOP}
+\cite{Volume Dynamic}
+\cite{TTECTrA}
+\cite{NPSS}
+
+\bibliographystyle{unsrt} %sorted by appearence, consider using natbib?
+\bibliography{bibliography}
+
+\subfile{appendix}
+
+\end{document}
