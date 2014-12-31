@@ -3,18 +3,32 @@
 
 % \tableofcontents
 
-\section{Introduction and Motivation}
+\section{Introduction}
+\subsection{Motivation}
+This research was initiated as risk reduction for the NASA
+Gondola for High Altitude Planetary Science (GHAPS) mission.
+High altitude balloon (HAB) missions carrying expensive science payloads
+across harsh, difficult-to-access locations could greatly benefit from
+improved descent and landing systems with the ability to mitigate landing
+loads and improve general recoverability.
+
+As a first step, the Rocket University training program developed a series of
+payloads of increasing capability to monitor and evaluate various recovery
+systems. Comprised of consumer-of-the-shelf (COTS) electronics and open-source
+software, this paper offers a few turn-key solutions for highly cost-constrained
+science missions. Rather than re-inventing the wheel, these solutions leverage
+open-source microcontroller platforms with large ecosystems that offer both
+flexibility and simplicity.
 
 
-\subsection{Design Cycle Overview}
+\subsection{Balloon Sub-Systems}
 
-	From a life-cycle perspective, there comes a point when the prospect of re-design becomes
-prohibitively expensive and initial design decisions become cemented into the design. Any insights
-gained from more detailed analyses are constrained to these initial design choices. Naturally, a
-tradeoff exists on the amount of time spent in each analysis phase. Spending more time in the low
-fidelity phase could have large payoffs in the long run; however, without higher fidelity models
-it is hard to identify possible shortcomings such as those arising from operability and control
-issues.
+\subsubsection{Balloon}
+\subsubsection{Parachute}
+\subsubsection{Telemetry}
+\subsubsection{Power}
+
+\section{Avionics for Multiple Cost Levels}
 
 %\begin{figure}[H]
 %\centering
@@ -22,11 +36,11 @@ issues.
 %\caption{Overarching Applied Research Challenge: Uncertainty in Optimum Product vs. Time \& Cost to Produce}
 %\label{f:product_vs_time}
 %\end{figure}
-\section{Sub \$500 launches}
+\subsection{Sub \$500 launches}
 
-\section{Sub \$1,000 launches}
+\subsection{Sub \$1,000 launches}
 
-\section{Sub \$2,000 launches}
+\subsection{Sub \$2,000 launches}
 
 \section{Visualizing Results}
 
@@ -36,16 +50,14 @@ issues.
 \subsection{Google Fusion Tables}
 
 
-\begin{enumerate}
-  \item 1
-  \item Transfer cases to NPSS
-  \item Run Cases, output in matlab-syntax
-  \item 4
-\end{enumerate}
-
-
 \section{Final Remarks}
-This is conclusions section it's quite handy.
+The sensor packages outlined in this paper are inconsequential in weight and
+compatible for payloads of many sizes up to thousands of pounds. These systems
+were originally intended for passive monitoring systems, however the final
+avionics system outlined could be used to control an active descent system.
+
+Payloads falling under the FAA exempt payload regulation offer exponentially
+lower costs with vastly fewer restrictions. 
 
 
 \end{document}
