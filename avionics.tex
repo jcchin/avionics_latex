@@ -7,54 +7,100 @@
 \subsection{Motivation}
 This research was initiated as risk reduction for the NASA
 Gondola for High Altitude Planetary Science (GHAPS) mission.
-High altitude balloon (HAB) missions carrying expensive science payloads
+High altitude balloon missions carrying expensive science payloads
 across harsh, difficult-to-access locations could greatly benefit from
 improved descent and landing systems with the ability to mitigate landing
 loads and improve general recoverability.
 
-As a first step, the Rocket University training program developed a series of
-payloads of increasing capability to monitor and evaluate various recovery
-systems. Comprised of consumer-of-the-shelf (COTS) electronics and open-source
-software, this paper offers a few turn-key solutions for highly cost-constrained
-science missions. Rather than re-inventing the wheel, these solutions leverage
-open-source microcontroller platforms with large ecosystems that offer both
-flexibility and simplicity.
+As a first step, the Rocket University development program developed a series
+of payloads of increasing capability to monitor and evaluate various recovery
+systems. Comprised mainly of consumer-of-the-shelf (COTS) electronics and
+open-source software, this paper offers a few turn-key solutions for highly
+cost-constrained science missions. Rather than re-inventing the wheel, these
+solutions leverage open-source microcontroller platforms with large ecosystems
+that offer both flexibility and simplicity.
 
 
-\subsection{Balloon Sub-Systems}
+\subsection{Balloon Sub-System Basics}
 
-\subsubsection{Balloon}
-\subsubsection{Parachute}
-\subsubsection{Telemetry}
+A vast multitude of HAB related resources exist online, therefore many of the
+ancillirary subsystems are only breifly outlined here. With many amatuer missions
+focused on videography, this work addresses data aquisition and power management;
+two disciplines that scale to any size balloon mission.
+
 \subsubsection{Power}
+
+LiSO2
+
+\subsubsection{Telemetry}
+
+RFD900, APRS
+
+\subsubsection{Balloon and Parachute}
+
+Include images, and balloon providers
+
+\subsubsection{Gondola Design}
+
+<6lb Foam core design, BFS gondola design
+
+\subsubsection{Launch Operations}
+
+Inflating the balloon, estimating trajectory, launch supplies
+temperature profile, lift calcs vs cost, 
 
 \section{Avionics for Multiple Cost Levels}
 
+Microcontrollers and systems on a chip (SoC) have improved significantly in 
+compute power, accessibility, and cost over the past few years.
+Initially driven by hobby electronics, an extremely broad community of developers
+have emerged, blurring the lines between amatuer and professional systems for
+many applications. The new economies of scale, trickle-down smartphone
+technology, Internet-of-Things (IoT) movement, and beginner friendly developer
+tools have made high-performance sensing platforms accessible to anyone.
+
+The choice of hardware outlined here is separated into various pricing teirs,
+each optimized for rapid development time and extensibility.
 %\begin{figure}[H]
 %\centering
 %\includegraphics[width=1.0\textwidth]{images/optimum_product_vs_time}
 %\caption{Overarching Applied Research Challenge: Uncertainty in Optimum Product vs. Time \& Cost to Produce}
 %\label{f:product_vs_time}
 %\end{figure}
-\subsection{Sub \$500 launches}
+\subsection{Sub \$200 launches}
+
+Micro-HABS
 
 \subsection{Sub \$1,000 launches}
 
+Arduino Based
+
 \subsection{Sub \$2,000 launches}
+
+Pixhawk Based
+
+\section{Power Management and Distribution}
+
+Anthony's work goes here.
 
 \section{Visualizing Results}
 
-
 \subsection{Processing}
 
-\subsection{Google Fusion Tables}
+Processing is a programming language and development environment designed
+with visualization in mind. For this project, it was used to sync video
+footage with visualized sensor data. The program embeds the video and syncs
+the framerate with rows of sensor data from a CSV. At 30 frames per second,
+it reads a new row from the CSV file every 6 frames, updating the display.
 
+\subsection{Data Dissemination}
+
+Google Fusion Tables, Github, etc
 
 \section{Final Remarks}
 The sensor packages outlined in this paper are inconsequential in weight and
-compatible for payloads of many sizes up to thousands of pounds. These systems
-were originally intended for passive monitoring systems, however the final
-avionics system outlined could be used to control an active descent system.
+compatible for payloads of many sizes up to thousands of pounds.
+These systems were originally intended for passive monitoring systems, however the final avionics system outlined could be used to control an active descent system.
 
 Payloads falling under the FAA exempt payload regulation offer exponentially
 lower costs with vastly fewer restrictions. 
