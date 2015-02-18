@@ -30,24 +30,93 @@ two disciplines that scale to any size balloon mission.
 
 \subsubsection{Power}
 
-LiSO2
+Desirable battery characterstics include:
+Power Density: Amp-hours per unit of mass.
+Temperature: Must be capable of handling -70 \deg C temperatures without
+significant voltage drop.
+Discharge Characteristics: Capable of handling sufficient current draw without
+significant voltage drop.
+
+Lithium Sulfer Dioxide (LiSO2) non-rechargeable batteries satisfy all of these
+requirements and are readily available from SAFT batteries.
+This particular battery type is rated for many space and medical applications,
+and also happen to be the primary battery type chosen by the Balloon Project Office.
+
 
 \subsubsection{Telemetry}
 
-RFD900, APRS
+The ability to recieve live wirelessly transmitted data from a payload is
+essential for the recoverability of any balloon launch. FindMeSpot is the easiest
+COTS device, requiring no configuration or operator licenses. Communication via
+cell phone devices also offers slightly more flexibility, but additional configuration.
+Both of these methods are limited to 40,000ft altitude celings. To maintain constant
+communication up to 100,000+ feet requires higher powered radios. The most
+accessible amatuer radios require an operator with an amatuer HAM license.
+These licenses require taking an exam (technical difficulty on par with a
+driving exam) from a local HAM chapter. Many free online resources and study
+guides provide an easy way to master the finite pool of possible written quiz
+questions in a few weeks time. After passing the written test, the basic
+technician license is granted by the FCC within a few weeks. Additional licenses
+can be obtained by taking increasingly difficult written exams, allowing the
+operation of higher powered radios over a larger range of frequencies.
+
+The most popular balloon radio protocol, Automatic Packet Reporting System (APRS)
+provides a very succinct transmission including the balloons GPS lat, lon, heading,
+and operator call-sign. By commiting to this protocol, the operator is able to
+leverage a large amount of pre-existing HAM radio infrastrucutre. Rather than
+relying exclusively on personal ground station equipment, many other amatuer
+stations are constantly listening for the APRS frequency and protocol. If the
+signal reaches any of these stations, the signal will be repeated and re-broadcasted
+to neighboring stations. Eventually the signal will reach an internet ``gateway''
+where it can published to various web applications. This allows an APRS operator
+to simply broadcast signals, without the direct need for any reciever equipment.
+As long as the signal reaches neighboring HAM stations, the call-sign and information
+will be available in real-time from any internet connected device. For more direct
+reception, many affordable handheld devices [list here] are available that can
+be tuned to filter APRS messages from specfic call-signs.
+
+If the payload requires more advanced telemetry, leveraging other frequencies
+and protocols may be more suitable. If a constant transmission
+(possibly bi-directional) communication link or higher bandwidth is needed,
+remote control UAV radio components may be a better option. With balloon
+operations requiring extremely long-distance communication, the most ideal
+frequencies reside in the UHF range. As a rule of thumb, transmission bandwith
+increases and range decreases with increasing frequency. 900Mhz is ideal for
+basic telemetry in the 100-200 kbps range up to 40 miles away. Radio modems
+include the RFD900, and Xtend900. These specific models are identified for their
+drop-in compatibility with existing hobby level UAV ecosystems that are outlined
+in subsequent sections. They are only modestly export controlled, require only
+a basic technician's license, and require the minimal amount of radio and 
+programming experience.
 
 \subsubsection{Balloon and Parachute}
 
-Include images, and balloon providers
+Include images, and balloon providers,where to purchase, estimated helium cost,
 
 \subsubsection{Gondola Design}
 
-<6lb Foam core design, BFS gondola design
+\<6lb Foam core design, with images/diagrams!
+
+BFS gondola design
 
 \subsubsection{Launch Operations}
 
-Inflating the balloon, estimating trajectory, launch supplies
+Balloon: Inflation procedures, latex gloves, tarp, paddles, etc.
+
+Pre-flight: estimating trajectory, launch supplies
 temperature profile, lift calcs vs cost, 
+
+FAA regs: NOTAM, etc
+
+Developing FAA regulations (as of February 2014) limit small UAS (\<55lbs) to
+line of site flight, \<500 ft altitude ceiling, daylight operation, operator certification,
+and additional restrictions in various airspaces (such as 5 mile radii around airports)
+without notifying air traffic control or further FAA exemption.
+A separate, ``more felxible'', set of regulations are under considerations
+for ``micro UAS'' class aircraft that fall under 4.4 lbs.
+Although it's unclear how balloon systems overlap with UAS, the development
+of guided descent and recovery systems certainly fall under both categories.
+[Add Citations http://www.faa.gov/regulations_policies/rulemaking/media/021515_sUAS_Summary.pdf]
 
 \section{Avionics for Multiple Cost Levels}
 
