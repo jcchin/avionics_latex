@@ -32,7 +32,7 @@ two disciplines that scale to any size balloon mission.
 
 Desirable battery characterstics include:
 Power Density: Amp-hours per unit of mass.
-Temperature: Must be capable of handling -70 \deg C temperatures without
+Temperature: Must be capable of handling -70 deg C temperatures without
 significant voltage drop.
 Discharge Characteristics: Capable of handling sufficient current draw without
 significant voltage drop.
@@ -91,16 +91,19 @@ programming experience.
 
 \subsubsection{Balloon and Parachute}
 
+[Jeremiah Section]
 Include images, and balloon providers,where to purchase, estimated helium cost,
 
 \subsubsection{Gondola Design}
 
+[Jeremiah Section]
 \<6lb Foam core design, with images/diagrams!
 
 BFS gondola design
 
 \subsubsection{Launch Operations}
 
+[Jeremiah Section]
 Balloon: Inflation procedures, latex gloves, tarp, paddles, etc.
 
 Pre-flight: estimating trajectory, launch supplies
@@ -116,7 +119,7 @@ A separate, ``more felxible'', set of regulations are under considerations
 for ``micro UAS'' class aircraft that fall under 4.4 lbs.
 Although it's unclear how balloon systems overlap with UAS, the development
 of guided descent and recovery systems certainly fall under both categories.
-[Add Citations http://www.faa.gov/regulations_policies/rulemaking/media/021515_sUAS_Summary.pdf]
+[Add Citations \cite{FAAuav}]
 
 \section{Avionics for Multiple Cost Levels}
 
@@ -136,31 +139,51 @@ each optimized for rapid development time and extensibility.
 %\caption{Overarching Applied Research Challenge: Uncertainty in Optimum Product vs. Time \& Cost to Produce}
 %\label{f:product_vs_time}
 %\end{figure}
-\subsection{Sub \$200 launches}
+\subsection{Sub \$300 launches}
 
-Micro-HABS
+Nano-HABS represent the most extreme type of balloon flight possible.
+These payloads are measured on the order of grams, and designed to be nuetrally
+bouyant with the lift generated from large party balloons. Although they cannot
+reach extremely high altitudes, or carry any consequential amounts of payload,
+they can be outfitted with extremely basic sensors and communication equipment.
+Sucessful launches costing less than \$100 have been demonstrated with balloons
+capable of traveling across Europe, while maintaining radio contact. Although
+extremely limited individually, these balloons could serve useful purposes in
+swarms.
+
+Micro-HABS have been popularized by high school and colleges, and have been
+repeatedly shown to take still and video footage from up to 100,000 ft for less
+than \$300. These payloads require larger latex balloons, with exponentially
+more helium.
 
 \subsection{Sub \$1,000 launches}
 
-Arduino Based
+Arduino Based, basically flight 1
 
 \subsection{Sub \$2,000 launches}
 
-Pixhawk Based
+Pixhawk Based, basically the rocket U final flight
 
 \section{Power Management and Distribution}
 
-Anthony's work goes here.
+[Anthony's work goes here.]
 
 \section{Visualizing Results}
 
-\subsection{Processing}
+
+\subsection{Dynamic Visualizations}
 
 Processing is a programming language and development environment designed
 with visualization in mind. For this project, it was used to sync video
 footage with visualized sensor data. The program embeds the video and syncs
 the framerate with rows of sensor data from a CSV. At 30 frames per second,
 it reads a new row from the CSV file every 6 frames, updating the display.
+
+Maybe mention HighFlite type projects?
+
+\subsection{Excel, Matlab, Python}
+
+Basic operations necessary to clean, graph, analyze data goes here.
 
 \subsection{Data Dissemination}
 
