@@ -26,34 +26,61 @@ that offer both flexibility and simplicity.
 A vast multitude of HAB related resources exist online, therefore many of the
 ancillirary subsystems are only breifly outlined here. With many amatuer missions
 focused on videography, this work addresses data aquisition and power management;
-two disciplines that scale to any size balloon mission.
+two disciplines that scale to a wide range of balloon mission.
 
-\subsubsection{Power}
+\subsubsection{Power and Thermal}
 
-Desirable battery characterstics include:
-Power Density: Amp-hours per unit of mass.
-Temperature: Must be capable of handling -70 deg C temperatures without
-significant voltage drop.
-Discharge Characteristics: Capable of handling sufficient current draw without
-significant voltage drop.
+Payloads endure extremely cold temperatures, making the most common battery
+types undesirable. As temperature decreases, voltage and overall battery
+capacity also decreases, often dropping off extremely fast after reaching a specific
+temperature threshold. With ambient temperatures reaching down to -75\degree C,
+passive inuslation or active heating can greatly improve battery capacity.
+Many balloon applications with active heating and radio transmitters also draw
+current on the order of amps. Much like cold temperatures, high power draw can
+also disproportionately reduce battery life. 
 
-Lithium Sulfer Dioxide (LiSO2) non-rechargeable batteries satisfy all of these
-requirements and are readily available from SAFT batteries.
-This particular battery type is rated for many space and medical applications,
-and also happen to be the primary battery type chosen by the Balloon Project Office.
+Lithium Sulfer Dioxide (LiSO2) non-rechargeable batteries have been found to 
+satisfy all of the typical HAB requirements. They can sustain relatively high
+current draw, are resistant down to -40\degree C and their high energy density
+is desirable for lighter-than-air applications.
+This particular battery chemistry is rated for many space and
+medical applications, and are the primary battery type flown by the Columbia
+Scientific Balloon Facility.
+
+Using passive thermal insulation alone can capture enough waste heat from the
+battery bank to maintain -40\degree C, and on small payloads, chemical heat
+from hand-warmers are a popular and extremely simple supplemental heat source.
+Waste heat from transmitters and other on-boad electronics can also be used to
+keep the payload warm. Given the extremely rarified air at high altitudes,
+heat is primarily transferred by direct thermal conduction and radiation.
+The lack of convection can be a double-edged sword, helping electronics retain
+heat in some cases, but also making it difficult to release unwanted heat
+without heat sinks or radiators.
+
+Small scale missions are often airborne on the order of six hours,
+requiring multiple batteries connected in both series and parallel.
+When building battery banks it's important to consider variations between
+battery cells, which become exacerbated by high loads and low temperatures.
+Without sophisticated circuitry, it is generally not advisable to connect
+batteries into more than two parallel strings. Power across each string is more
+likely to become increasingly unbalanced, after a single string starts to degrade.
+This creates a positive feedback loop, which can ultimately lead to a dangerous
+thermal run-away. With D-cell sized batteries being the limit for most consumer
+batteries, this puts a natural limit on the Amp-hour capacity of amatuer flights.
 
 
 \subsubsection{Telemetry}
 
 The ability to recieve live wirelessly transmitted data from a payload is
 essential for the recoverability of any balloon launch. FindMeSpot is the easiest
-COTS device, requiring no configuration or operator licenses. Communication via
-cell phone devices also offers slightly more flexibility, but additional configuration.
-Both of these methods are limited to 40,000ft altitude celings. To maintain constant
-communication up to 100,000+ feet requires higher powered radios. The most
-accessible amatuer radios require an operator with an amatuer HAM license.
+COTS tracking device, requiring no configuration or operator licenses.
+Communication via cell phone devices also offers slightly more flexibility,
+but additional configuration and complexity.
+Both of these methods are limited to 40,000ft altitude celings.
+To maintain constant communication up to 100,000+ feet requires higher powered radios.
+The most accessible amatuer radios require an operator with an amatuer HAM license.
 These licenses require taking an exam (technical difficulty on par with a
-driving exam) from a local HAM chapter. Many free online resources and study
+driving exam) from a local amatuer radio chapter. Many free online resources and study
 guides provide an easy way to master the finite pool of possible written quiz
 questions in a few weeks time. After passing the written test, the basic
 technician license is granted by the FCC within a few weeks. Additional licenses
@@ -68,31 +95,35 @@ relying exclusively on personal ground station equipment, many other amatuer
 stations are constantly listening for the APRS frequency and protocol. If the
 signal reaches any of these stations, the signal will be repeated and re-broadcasted
 to neighboring stations. Eventually the signal will reach an internet ``gateway''
-where it can published to various web applications. This allows an APRS operator
-to simply broadcast signals, without the direct need for any reciever equipment.
+where it is published to various web applications and databases.
+This allows an APRS operator to simply broadcast signals,
+without the direct need for any reciever equipment.
 As long as the signal reaches neighboring HAM stations, the call-sign and information
-will be available in real-time from any internet connected device. For more direct
-reception, many affordable handheld devices [list here] are available that can
-be tuned to filter APRS messages from specfic call-signs.
+will be available in real-time from any internet connected device.
+For more direct reception and faster feedback,
+many affordable handheld recievers are available that can
+be tuned to filter out all incoming signals except APRS messages from specfic
+call-signs.
 
 If the payload requires more advanced telemetry, leveraging other frequencies
 and protocols may be more suitable. If a constant transmission
 (possibly bi-directional) communication link or higher bandwidth is needed,
-remote control UAV radio components may be a better option. With balloon
-operations requiring extremely long-distance communication, the most ideal
-frequencies reside in the UHF range. As a rule of thumb, transmission bandwith
-increases and range decreases with increasing frequency. 900Mhz is ideal for
+amatuer remote control UAV radio components may be a better option.
+With balloon operations requiring extremely long-distance communication,
+the most ideal frequencies reside in the UHF range.
+As a general rule, transmission bandwith increases and range decreases with
+increasing frequency. 900Mhz is ideal for
 basic telemetry in the 100-200 kbps range up to 40 miles away. Radio modems
 include the RFD900, and Xtend900. These specific models are identified for their
 drop-in compatibility with existing hobby level UAV ecosystems that are outlined
-in subsequent sections. They are only modestly export controlled, require only
-a basic technician's license, and require the minimal amount of radio and 
+in subsequent sections. They are only export controlled, require only
+a basic technician's license, and require a minimal amount of radio and 
 programming experience.
 
 \subsubsection{Balloon and Parachute}
 
 [Jeremiah Section]
-Include images, and balloon providers,where to purchase, estimated helium cost,
+Include images, and balloon providers,where to purchase, estimated helium/balloon cost,
 
 \subsubsection{Gondola Design}
 
@@ -111,15 +142,17 @@ temperature profile, lift calcs vs cost,
 
 FAA regs: NOTAM, etc
 
-Developing FAA regulations (as of February 2014) limit small UAS (\<55lbs) to
+Developing FAA regulations (as of February 2015) limit small UAS (\<55lbs) to
 line of site flight, \<500 ft altitude ceiling, daylight operation, operator certification,
 and additional restrictions in various airspaces (such as 5 mile radii around airports)
 without notifying air traffic control or further FAA exemption.
 A separate, ``more felxible'', set of regulations are under considerations
 for ``micro UAS'' class aircraft that fall under 4.4 lbs.
 Although it's unclear how balloon systems overlap with UAS, the development
-of guided descent and recovery systems certainly fall under both categories.
-[Add Citations \cite{FAAuav}]
+of guided descent and recovery systems certainly fall under both categories,
+with even more stringent restrictions applied to vehicles used for commercial gain.
+[\cite{FAAuav}]
+
 
 \section{Avionics for Multiple Cost Levels}
 
@@ -141,20 +174,26 @@ each optimized for rapid development time and extensibility.
 %\end{figure}
 \subsection{Sub \$300 launches}
 
-Nano-HABS represent the most extreme type of balloon flight possible.
+Pico-HABS represent the most extreme type of balloon flight possible.
 These payloads are measured on the order of grams, and designed to be nuetrally
 bouyant with the lift generated from large party balloons. Although they cannot
 reach extremely high altitudes, or carry any consequential amounts of payload,
 they can be outfitted with extremely basic sensors and communication equipment.
 Sucessful launches costing less than \$100 have been demonstrated with balloons
-capable of traveling across Europe, while maintaining radio contact. Although
-extremely limited individually, these balloons could serve useful purposes in
-swarms.
+capable of traveling 30,000ft high and over 4000 miles in a single flight,
+while maintaining radio contact.
+\cite{Leo} \cite{Amsat}
+Although extremely limited individually,
+these balloons could serve useful purposes in distributed swarms.
 
-Micro-HABS have been popularized by high school and colleges, and have been
-repeatedly shown to take still and video footage from up to 100,000 ft for less
-than \$300. These payloads require larger latex balloons, with exponentially
-more helium.
+Micro-HABS have been popularized by high school and colleges, and are often used
+to take still and video footage from up to 100,000 ft for less
+than \$300. These payloads require larger latex balloons, with significantly
+more helium. Payloads on the order of a few pounds should be congizant of safety
+concerns, avoiding highly trafficed air-space and landing zones.
+Higher cost launches, outlined below, also often fall under the six pound
+category, however the exponential increase in helium and balloon cost places
+them in their own category.
 
 \subsection{Sub \$1,000 launches}
 
