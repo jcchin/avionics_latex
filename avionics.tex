@@ -203,24 +203,102 @@ capable of traveling 30,000ft high and over 4000 miles in a single flight,
 while maintaining radio contact.
 \cite{Leo} \cite{Amsat}
 Although extremely limited individually,
-these balloons could serve useful purposes in distributed swarms.
+these balloons could potentially serve useful purposes in distributed swarms.
 
 Micro-HABS have been popularized by high school and colleges, and are often used
 to take still and video footage from up to 100,000 ft for less
 than \$300. These payloads require larger latex balloons, with significantly
-more helium. Payloads on the order of a few pounds should be congizant of safety
-concerns, avoiding highly trafficed air-space and landing zones.
+more helium. 
+
+It should be noted that missions with payloads weighing a few pounds
+should be congizant of safety concerns,
+avoiding highly trafficed air-space and landing zones.
+
 Higher cost launches, outlined below, also often fall under the six pound
 category, however the exponential increase in helium and balloon cost places
 them in their own category.
 
-\subsection{Sub \$1,000 launches}
+\subsection{Sub \$1,500 launches}
 
-Arduino Based, basically flight 1
+The first Rocket University avionics demonstrator was designed to characterize
+flight loads throughout the entire mission profile and maximizing the chances
+of recoverability, while staying under \$1000. An arduino mega was chosen as
+the main flight controller, due to it's extremely large ecosystem of drop-in
+sensors, firmware/drivers, documentation, flexibility, development tools,
+and low-cost. Slightly more advanced users could also create a very similar
+system using the beaglebone microcontroller and ecosystem. The raspberry pi
+platform is less strongly recommended for balloon applications, as it's better
+suited for desktop applications requiring a full operating systems and less
+geared towards intregration with sensors and other peripherals.
 
-\subsection{Sub \$2,000 launches}
+The following parts lists outlines the full build for a system capable of
+measuring, temperature, pressure, altitude, acceleration, orientation, heading,
+location, and video, with doubly redundant tracking mechanisms. The system
+is capable of data logging as well supporting additional sensors across a range
+of communication protocols (SPI, Serial, I2C, One-Wire, ADC, and more...).
+An additional 3lbs of payload could be lifted with the given launch configuration,
+or an additional 8 lbs, distributed over two payloads with additional helium.
 
-Pixhawk Based, basically the rocket U final flight
+\begin{table}[h]
+    \centering
+    \caption{Balloon Cost as of mid-2014}
+    \label{tab:desvars}
+    \begin{tabular}{l  c  c } 
+        \hline \hline
+        Part &  Function & Cost \\ \hline \hline
+        Arduino Mega & Microcontroller & \$46  \\ 
+        microSD card 16GB & Data Storage & \$10 \\ 
+        Razor 9DOF & Inertial Measurement Unit & \$75 \\ 
+        GPS & Navigation & \$50\\
+        GPS Antenna & Antenna & \$13\\
+        RF adapter & Antenna Adapter & \$4\\ 
+        Action Video Cam & Video Recording & \$200\\
+        SpotTracker & Back-up Tracking & \$75\\ 
+        MicroTrak & APRS Tracker & \$250\\ 
+        Connectors/Cables & Misc & \$11\\
+        Parachute & Descent Stabilization & \$16\\ \hline
+        Subtotal & (One-time cost) & \$750\\ \hline
+        Balloon & Lifting Envelope & \$300 \\
+        Helium & Lifting Gas & \$200? \\
+        LiSO2 Batteries (x6)& Power & \$100\\ \hline
+        Total & & \$1350 \\ \hline \hline
+    \end{tabular}
+\end{table}
+
+Although the total budget is over \$1000, subsequent launches would cost almost
+half the up-front cost, assuming the payload is recovered.
+
+\subsection{Sub \$2,500 launches}
+
+The second avionics design is geared towards more advanced payloads requiring
+more challenging requirements. Although the sensors involved are comparable to
+the previous price teir, this consumer of the shelf (COTS) system requires much
+less configuration out-of-the-box. As a drawback, it's a much more complicated
+system to extend towards custom applications. Drawing from the amatuer unmanned
+aerial vehicle community, it excels when requirements include
+constant two-way telemetry, remote control, asynchronous sensor sampling,
+sensor fusion, and even autonomous flight. The system is centered around the
+Pixhawk open-source UAV ecosystem.
+
+\begin{table}[h]
+    \centering
+    \caption{Balloon Cost as of mid-2014}
+    \label{tab:desvars}
+    \begin{tabular}{l  c  c } 
+        \hline \hline
+        Part &  Function & Cost \\ \hline \hline
+        Pixhawk & FlightController & \$240  \\ 
+        microSD card 32GB & Data Storage & \$20 \\ 
+        RFD900 & Radio Tranceier & \$215 \\ 
+        GPS and Antenna & Navigation & \$150\\
+        Action Video Cam & Video Recording & \$200\\
+        Airspeed Sensor & Airspeed & \$55\\ 
+        Barometer \& Thermocouple & Pressure \& Temperature & \$20 \\ \hline
+        Total & & \$900 \\ \hline \hline
+    \end{tabular}
+\end{table}
+
+[Jeff will add more here...]
 
 \section{Power Management and Distribution}
 
@@ -292,7 +370,35 @@ the CSV file, and halfway through the video.
 
 \subsection{Data Dissemination}
 
-Google Fusion Tables, Github, etc
+Two recommended services for online data dissemination include Github and
+Google Fusion Tables.
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{images/speedPlot.png}
+ \caption{Fusion Table Interactive Speed vs. Time Plot}
+\label{f:plot}
+\end{figure}
+
+\begin{figure} [hbtp]
+        \centering
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{images/gps1.png}
+                \caption{GPS with speed indicators}
+                \label{fig:gps}
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{images/heatmap.png}
+                \caption{GPS Heatmap}
+                \label{fig:heatmap}
+        \end{subfigure}
+        \caption{Google Fusion Tables}
+\end{figure}
+
 
 \section{Final Remarks}
 
