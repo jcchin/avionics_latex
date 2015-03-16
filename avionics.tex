@@ -123,7 +123,26 @@ programming experience.
 \subsubsection{Balloon and Parachute}
 
 [Jeremiah Section]
-Include images, and balloon providers,where to purchase, estimated helium/balloon cost,
+Include images, and balloon providers,where to purchase, estimated helium cost,
+
+Helium roughly \$7 per cubic meter.
+
+\begin{table}[h]
+    \centering
+    \caption{Balloon Cost as of mid-2014}
+    \label{tab:desvars}
+    \begin{tabular}{l  c  c  c  c  c} 
+        \hline \hline
+        Size &  Payload & Max Alt & Balloon Price & Helium Volume &Helium Cost\\ \hline \hline
+        350g & 1-2lb & 60-90kft & \$30 & [fill me in] & \$40? \\ 
+        800g & 2-4lb & 90-100kft & \$50 & & \$80? \\ 
+        1200g & 2-5lb & 105-115kft & \$70 & & \$150? \\ 
+        1500g & 4-6lb & 105-115kft & \$90 & & \$250?\\
+        2000g & 7-9lb & 105-115kft & \$300 & & \$450?\\ 
+        3000g & \textless 12lb & 115+kft & \$400 & & \$600?\\ \hline
+    \end{tabular}
+\end{table}
+
 
 \subsubsection{Gondola Design}
 
@@ -151,7 +170,7 @@ for ``micro UAS'' class aircraft that fall under 4.4 lbs.
 Although it's unclear how balloon systems overlap with UAS, the development
 of guided descent and recovery systems certainly fall under both categories,
 with even more stringent restrictions applied to vehicles used for commercial gain.
-[\cite{FAAuav}]
+\cite{FAAuav}
 
 
 \section{Avionics for Multiple Cost Levels}
@@ -209,32 +228,89 @@ Pixhawk Based, basically the rocket U final flight
 
 \section{Visualizing Results}
 
+Post-processing the results of a flight often involves processing numerous
+hours of raw sensor data. If all sensors aren't logging to a centralized source,
+it is important to have a baseline event to properly sync each source. For
+example, multiple independent acceleromter sensors can all be synced with a
+small `kick' before launching. Since each sensor can't be turned on at the exact
+same time, this small acceleration can used to match all sensors up to the same
+event in time, much like a movie clapperboard.
+
+\subsection{Post-processing}
+
+Working with extremely large data sources often requires manipulating and
+`cleaning' data using table-wide data transformations. Sensors may reset
+mid-flight, sample at various rates, or momentarily return invalid values.
+In order to process data for analysis purposes, it can be necessary to perform
+string and float manipulations, interpolations, etc.
+
+While this will vary from project to project, it's important to be mindful of
+post-processing tasks while designing how each sensor reports data.
+Many sensors report floats even when throwing errors, making it difficult to
+search and distinguish between valid and invalid values during post-flight
+analysis. This can be avoided by logging errors with easily distinguishable
+strings or values that can easily be searched and removed later. It is also
+vital to timestamp and format all data in a syntax that is easily parse-able,
+based on the analysis tool of choice, otherwise it can be
+impossible to synchronize disparate logs with hundreds of thousands of entries.
+
+The example source-code can be found in \cref{app:Github2}.
 
 \subsection{Dynamic Visualizations}
 
+Even with perfectly synced data, it can be difficult to fully understand or 
+appreciate the data in the form of a CSV table. Plotting the data as a
+time-series can be helpful for analysis, and more advanced visualizations can
+be help in grasping the full context.
+
 Processing is a programming language and development environment designed
 with visualization in mind. For this project, it was used to sync video
-footage with visualized sensor data. The program embeds the video and syncs
-the framerate with rows of sensor data from a CSV. At 30 frames per second,
-it reads a new row from the CSV file every 6 frames, updating the display.
+footage with visualized sensor data. 
 
-Maybe mention HighFlite type projects?
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=1\textwidth]{images/space.png}
+ \caption{Processing Visualization at 88kft}
+\label{f:processing}
+\end{figure}
 
-\subsection{Excel, Matlab, Python}
-
-Basic operations necessary to clean, graph, analyze data goes here.
+This particular program displays the accelerations, temperature, speed,
+altitude, and orientation in multiple contexts. There is a video component
+showing a picture-and-picture view of both camera angles, accelerations plotted
+as vectors, data shown as raw values, altitude shown both as a moving graph and
+overlayed on a map with speed, and a 3D rendering of payload orientation.
+The source-code for this visualization can be found in \cref{app:Github3}.
+In order to properly sync the data with the video, all of the data was consolidated
+into a single table, where data was reported in to a new row every 0.2 seconds.
+The program embeds the video and syncs the framerate with rows of sensor data
+from a CSV. At 30 frames per second, it reads a new row from the CSV file every
+6 frames, updating the display. Playback controls are also provided, to allow
+the user to skip to any segment of the video/database. This requires a video
+file that starts and stops exactly with the beginning and endpoints of the data
+file. This way jumping to the halway point, corresponds to exactly halfway down
+the CSV file, and halfway through the video.
 
 \subsection{Data Dissemination}
 
 Google Fusion Tables, Github, etc
 
 \section{Final Remarks}
-The sensor packages outlined in this paper are inconsequential in weight and
-compatible for payloads of many sizes up to thousands of pounds.
-These systems were originally intended for passive monitoring systems, however the final avionics system outlined could be used to control an active descent system.
 
-Payloads falling under the FAA exempt payload regulation offer exponentially
-lower costs with vastly fewer restrictions. 
+Ballon payloads offer extremely low-cost scientific platforms.
+The advent of widely available inexepensive sensors, computers, and open-source
+hardware/software have greatly reduced the barrier to entry for planetary
+research.
+
+The lightweight, inexpesnive sensor packages outlined in this paper can
+scale to payloads of any size.
+These systems were originally intended for passive monitoring systems,
+however the final avionics system outlined could be used to control an
+active descent system.
+
+Balloons have made made a resurgance in both commercial and scientific applications.
+Exiciting projects such as Google Loon are poised to play a large role in
+extending internet connectivity to developing countries, proving that balloons
+can have significant and impactful real-world applications. \cite{Loon}
 
 
 \end{document}
